@@ -1,0 +1,13 @@
+# Ignore build files
+bin/
+build/
+lib/
+.*/
+*.3dsx
+*.smdh
+*.elf
+*.t3x
+*~
+
+# Ignore osu! assets
+romfs/default/
