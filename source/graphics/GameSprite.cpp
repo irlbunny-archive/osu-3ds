@@ -26,17 +26,15 @@ namespace graphics
 
         if (color != C2D_Color32(0x00, 0x00, 0x00, 0x00))
         {
-            C2D_ImageTint* tint = new C2D_ImageTint;
+            C2D_ImageTint tint;
 
             for (u8 index = 0; index < 4; index++)
             {
-                tint->corners[index].color = color;
-                tint->corners[index].blend = .5;
+                tint.corners[index].color = color;
+                tint.corners[index].blend = .5;
             }
 
-            C2D_DrawSpriteTinted(texture, tint);
-
-            delete tint;
+            C2D_DrawSpriteTinted(texture, &tint);
         }
         else C2D_DrawSprite(texture);
     }

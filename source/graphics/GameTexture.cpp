@@ -46,10 +46,10 @@ namespace graphics
             int resizedW = w, resizedH = h;
 
             resizedLoop:
-            if (resizedW >= 1024 || resizedH >= 1024) // PICA-200 only supports textures below 1024x1024.
+            if (resizedW > 1023 || resizedH > 1023) // PICA-200 only supports textures up to 1023x1023.
             {
-                resizedW = (int)(resizedW / 1.5f);
-                resizedH = (int)(resizedH / 1.5f);
+                resizedW = (int)(resizedW / 1.5);
+                resizedH = (int)(resizedH / 1.5);
 
                 goto resizedLoop;
             }

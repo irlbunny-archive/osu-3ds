@@ -10,14 +10,13 @@ namespace states
     class MainMenu
     {
     private:
-        graphics::GameSprite* menuBackground;
-        graphics::GameSprite* menuOsu;
+        graphics::GameSprite* background;
+        graphics::GameSprite* osu;
 
-        float menuOsuScale;
+        float osuScale;
 
         graphics::GameSprite* buttonPlay;
         graphics::GameSprite* buttonOptions;
-        graphics::GameSprite* buttonExit;
 
         graphics::GameText* copyright;
     public:
