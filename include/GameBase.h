@@ -1,9 +1,9 @@
-#ifndef _GAMEBASE_H
-#define _GAMEBASE_H
+#ifndef __GAMEBASE_H__
+#define __GAMEBASE_H__
 
-#include "common.h"
+#include <citro2d.h>
 
-#include "MainMenu.h"
+#include "states/MainMenu.h"
 
 class GameBase
 {
@@ -11,7 +11,7 @@ private:
     C3D_RenderTarget* top;
     C3D_RenderTarget* bottom;
 
-    MainMenu* mainMenu;
+    states::MainMenu* mainMenu;
 
     void DrawTop();
     void DrawBottom();
@@ -25,4 +25,4 @@ public:
     void Draw();
 };
 
-#endif // _GAMEBASE_H
+#endif // __GAMEBASE_H__

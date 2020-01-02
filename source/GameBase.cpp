@@ -14,7 +14,7 @@ GameBase::GameBase()
     this->top = C2D_CreateScreenTarget(GFX_TOP, GFX_LEFT);
     this->bottom = C2D_CreateScreenTarget(GFX_BOTTOM, GFX_LEFT);
 
-    this->mainMenu = new MainMenu();
+    this->mainMenu = new states::MainMenu();
 }
 
 GameBase::~GameBase()
