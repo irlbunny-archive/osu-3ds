@@ -55,8 +55,8 @@ namespace graphics
             }
             else
             {
-                stbir_resize_uint8((u8*)data, w, h, 0,
-                    (u8*)data, resizedW, resizedH, 0, 4);
+                stbir_resize_uint8(reinterpret_cast<u8*>(data), w, h, 0,
+                    reinterpret_cast<u8*>(data), resizedW, resizedH, 0, 4);
             }
 
             w = resizedW, h = resizedH;
@@ -66,7 +66,7 @@ namespace graphics
             C3D_Tex* tex = new C3D_Tex;
             Tex3DS_SubTexture* subtex = new Tex3DS_SubTexture;
 
-            C3D_TexInit(tex, (u16)wPow2, (u16)hPow2, GPU_RGBA8);
+            C3D_TexInit(tex, static_cast<u16>(wPow2), static_cast<u16>(hPow2), GPU_RGBA8);
             C3D_TexSetFilter(tex, GPU_NEAREST, GPU_NEAREST);
 
             tex->border = 0xFFFFFFFF;
@@ -77,14 +77,14 @@ namespace graphics
             subtex->height = (u16)h;
             subtex->left = 0.0f;
             subtex->top = 1.0f;
-            subtex->right = (w / (float)wPow2);
-            subtex->bottom = 1.0 - (h / (float)hPow2);
+            subtex->right = (w / static_cast<float>(wPow2));
+            subtex->bottom = 1.0 - (h / static_cast<float>(hPow2));
 
             memset(tex->data, 0, tex->size);
             for (int x = 0; x < w; x++) 
             {
                 for (int y = 0; y < h; y++) 
-                    SetPixel((u32*)tex->data, ((u32*)data)[y * w + x], x, y, wPow2, hPow2, 0);
+                    SetPixel(reinterpret_cast<u32*>(tex->data), (reinterpret_cast<u32*>(data))[y * w + x], x, y, wPow2, hPow2, 0);
             }
 
             C3D_TexFlush(tex);
