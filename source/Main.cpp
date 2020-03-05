@@ -1,9 +1,10 @@
 #include "GameBase.h"
 
+GameBase gameBase;
+
 int main(int argc, char* argv[])
 {
-	GameBase* gameBase = new GameBase();
-	gameBase->Run();
+	gameBase.Run();
 	
 	return 0;
 }
