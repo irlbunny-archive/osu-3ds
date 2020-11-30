@@ -24,18 +24,8 @@ namespace graphics
     
         C2D_SpriteSetCenter(texture, .5, .5);
 
-        if (color != C2D_Color32(0x00, 0x00, 0x00, 0x00))
-        {
-            C2D_ImageTint tint;
-
-            for (u8 index = 0; index < 4; index++)
-            {
-                tint.corners[index].color = color;
-                tint.corners[index].blend = .5;
-            }
-
-            C2D_DrawSpriteTinted(texture, &tint);
-        }
-        else C2D_DrawSprite(texture);
+        C2D_ImageTint tint;
+        C2D_PlainImageTint(&tint, color, 1.0f - ((color >> 24 & 0xFF) / 255.0f));
+        C2D_DrawSpriteTinted(texture, &tint);
     }
 }

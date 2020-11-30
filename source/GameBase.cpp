@@ -51,7 +51,7 @@ void GameBase::Draw()
 
 void GameBase::DrawTop()
 {
-    C2D_TargetClear(top, C2D_Color32(0x00, 0x00, 0x00, 0xFF));
+    C2D_TargetClear(top, C2D_Color32(0x00, 0x00, 0x00, 0x00));
     C2D_SceneBegin(top);
 
     mainMenu->DrawTop();

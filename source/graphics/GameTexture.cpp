@@ -24,24 +24,26 @@ namespace graphics
             
             int _w = w, _h = h;
 
-            RESIZING_LOOP:
-            if (_w > 1023 || _h > 1023) // PICA-200 only supports textures up to 1023x1023.
+            while (1)
             {
-                _w = (int)(_w / 1.5);
-                _h = (int)(_h / 1.5);
+                if (_w > 1023 || _h > 1023) // PICA-200 only supports textures up to 1023x1023.
+                {
+                    _w = (int)(_w / 1.5);
+                    _h = (int)(_h / 1.5);
+                }
+                else
+                {
+                    u8* resized = reinterpret_cast<u8*>(malloc(_w * _h * 4));
 
-                goto RESIZING_LOOP;
-            }
-            else
-            {
-                u8* resizedImage = reinterpret_cast<u8*>(malloc(_w * _h * 4));
+                    stbir_resize_uint8(reinterpret_cast<u8*>(image), w, h, 0,
+                        reinterpret_cast<u8*>(resized), _w, _h, 0, 4);
 
-                stbir_resize_uint8(reinterpret_cast<u8*>(image), w, h, 0,
-                    reinterpret_cast<u8*>(resizedImage), _w, _h, 0, 4);
+                    stbi_image_free(image);
 
-                stbi_image_free(image);
+                    image = resized;
 
-                image = resizedImage;
+                    break;
+                }
             }
 
             w = _w, h = _h;

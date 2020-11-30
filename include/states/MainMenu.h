@@ -2,8 +2,11 @@
 #define __MAINMENU_H__
 
 #include "graphics/GameSprite.h"
-#include "graphics/GameText.h"
 #include "graphics/GameTexture.h"
+
+#include "../HitCircle.h"
+
+#include <vector>
 
 namespace states
 {
@@ -12,13 +15,13 @@ namespace states
     private:
         graphics::GameSprite* background;
         graphics::GameSprite* osu;
-
+        
         float osuScale;
+
+        graphics::GameSprite* osuFade;
 
         graphics::GameSprite* buttonPlay;
         graphics::GameSprite* buttonOptions;
-
-        graphics::GameText* copyright;
     public:
         MainMenu();
 
